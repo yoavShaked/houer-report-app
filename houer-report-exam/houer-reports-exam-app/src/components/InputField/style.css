@@ -1,0 +1,14 @@
+.input-field{
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 0 8px;
+    color: #666;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.not-valid{
+    border: 1px solid red;
+}
