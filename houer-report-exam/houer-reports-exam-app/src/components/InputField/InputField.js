@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-class InputField extends React.Component{
+class InputField extends React.Component {
     constructor(props) {
         super(props);
         this.checkValide = this.checkValide.bind(this);
@@ -14,17 +14,18 @@ class InputField extends React.Component{
         if (this.props.value === '') {
             this.setState({ classNameNotValid: 'not-valid' });
         }
-        else{
+        else {
             this.setState({ classNameNotValid: '' });
         }
     }
 
     render() {
         return (
-            <div>
-                <label>{this.props.labale}</label>
+            <div className="input-main">
+                <label className="input-label">{this.props.labale}</label>
+                <br />
                 <input className={`input-field ${this.state.classNameNotValid}`}
-                value={this.props.value}
+                    value={this.props.value}
                     type="text"
                     onChange={this.props.HandleChange}
                     onBlur={this.checkValide} />

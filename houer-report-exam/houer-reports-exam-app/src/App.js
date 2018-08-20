@@ -7,7 +7,7 @@ import FormHouerReport from './components/FormHouersReport/FormHouerRepory';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <BrowserRouter>
           <div>
             <Switch>
