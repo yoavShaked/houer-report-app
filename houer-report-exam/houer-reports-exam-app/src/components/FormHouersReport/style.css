@@ -1,7 +1,19 @@
 
+.gradient-success{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #EFEFBB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .report-form-main{
+    border-radius: 7px;
+    z-index: 1;
+    background: whitesmoke;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .calender-main{
@@ -12,6 +24,17 @@
     margin-left: 30%;
 }
 
+.success{
+    border-radius: 7px;
+    width: 20%;
+    text-align: center;
+    color: green;
+    margin-left: 40%;
+    margin-top: 12%;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
+}
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -21,7 +44,14 @@
         width: 100%;
         height: 10%;
         display: block;
-        
+    }
+
+    .success{
+        float: left;
+        width: 70%;
+        display: block;
+        margin-right: 10px;
+        margin-left: 35px;
     }
   }
   

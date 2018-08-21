@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './style.css';
 import {
     Button,
@@ -96,15 +96,24 @@ class FormHouerReport extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeUser = this.handleChangeUser.bind(this);
-        this.handleChangeDate = this.handleChangeDate.bind(this);
-        this.handleChangeStartTime = this.handleChangeStartTime.bind(this);
-        this.handleChangeEndTime = this.handleChangeEndTime.bind(this);
+        this.handleSubmit = this
+            .handleSubmit
+            .bind(this);
+        this.handleChangeUser = this
+            .handleChangeUser
+            .bind(this);
+        this.handleChangeDate = this
+            .handleChangeDate
+            .bind(this);
+        this.handleChangeStartTime = this
+            .handleChangeStartTime
+            .bind(this);
+        this.handleChangeEndTime = this
+            .handleChangeEndTime
+            .bind(this);
         this.state = {
             user: '',
             date: new Date(),
-
             startTime: {
                 value: null,
                 label: ''
@@ -117,7 +126,7 @@ class FormHouerReport extends React.Component {
                 emailState: '',
                 timeState: false,
                 emailEmpty: false,
-                formNotValid: false
+                formNotValid: true
             }
         };
     }
@@ -153,8 +162,7 @@ class FormHouerReport extends React.Component {
 
         if (this.state.endTime.value > startTime.value) {
             validate.timeState = false;
-        }
-        else if (this.state.endTime.value <= startTime.value) {
+        } else if (this.state.endTime.value <= startTime.value) {
             validate.timeState = true;
         }
 
@@ -164,10 +172,9 @@ class FormHouerReport extends React.Component {
 
     handleChangeEndTime(endTime) {
         const { validate } = this.state;
-        if(this.state.startTime.value < endTime.value){
+        if (this.state.startTime.value < endTime.value) {
             validate.timeState = false;
-        }
-        else if(this.state.startTime.value >= endTime.value){
+        } else if (this.state.startTime.value >= endTime.value) {
             validate.timeState = true;
         }
         this.setState({ validate });
@@ -191,23 +198,18 @@ class FormHouerReport extends React.Component {
         this.setState({ validate });
     }
 
-    formValidation() 
-    {
+    formValidation() {
         const { validate } = this.state;
 
         if (this.state.user === '') {
             validate.formNotValid = true;
-        }
-        else if (validate.emailState !== 'has-success') {
+        } else if (validate.emailState !== 'has-success') {
             validate.formNotValid = true;
-        }
-        else if (validate.timeState) {
+        } else if (validate.timeState) {
             validate.formNotValid = true;
-        }
-        else if(this.state.endTime.label === '' || this.state.startTime.label === '' || validate.timeState === true){
+        } else if (this.state.endTime.label === '' || this.state.startTime.label === '' || validate.timeState === true) {
             validate.formNotValid = true;
-        }
-        else {
+        } else {
             validate.formNotValid = false;
         }
 
@@ -215,15 +217,16 @@ class FormHouerReport extends React.Component {
     }
 
     render() {
-        //TODO 
-        let success = <div>
-            <FormFeedback valid>Thanks for aplly!
-            You have successfully submited your information.</FormFeedback>
-            <Link to="/">Home</Link>
+
+        let success = <div className="gradient-success"> <div className="success example alert alert-success">
+            <Label className="font-weight-bold">Thanks for aplly! You have successfully submited your information.</Label>
+            <br />
+            <Link className="btn btn-success btn-lg box-shadow--4dp" to="/">Home</Link>
+        </div>
         </div>;
-        //
-        return (
-            <Container className="report-form-main">
+
+        let form = <div className="p-3 mb-2 bg-primary">
+            <Container className="report-form-main alert alert-dark">
                 <Form onSubmit={this.handleSubmit}>
                     <Col>
                         <FormGroup>
@@ -235,8 +238,7 @@ class FormHouerReport extends React.Component {
                                 value={this.state.user}
                                 onChange={this.handleChangeUser}
                                 valid={this.state.validate.emailState === 'has-success'}
-                                invalid={this.state.validate.emailState === 'has-danger'}
-                                />
+                                invalid={this.state.validate.emailState === 'has-danger'} />
                             <FormFeedback valid>
                                 Your email looks correct.
                             </FormFeedback>
@@ -285,6 +287,15 @@ class FormHouerReport extends React.Component {
                     <Button type="submit" color="primary">APPLY</Button>
                 </Form>
             </Container>
+        </div>;
+
+        const { formNotValid } = this.state.validate;
+
+        return (
+            <div>
+                {formNotValid && form}
+                {!formNotValid && success}
+            </div>
         );
     }
 }
