@@ -1,0 +1,60 @@
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.main-header{
+    color: aliceblue;
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 80px;
+    display: block;
+    text-align: center;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.title{
+    padding-top: 50px;
+    font-weight: bold;
+}
+
+.center{
+    text-align: center;
+}
+
+.main{
+    padding-top: 5px;
+    width: 100%;
+    display: block;
+}
+
+.select-label{
+    margin-left: 25%;
+    bottom: 2px;;
+    padding: 0%;
+}
+
+.select-month{
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.filter-button{
+    padding-left: 69.43%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: block;
+}

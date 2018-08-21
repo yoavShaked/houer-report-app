@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './style.css';
 import {
     Button,
@@ -11,7 +11,9 @@ import {
     Col,
     Container,
     FormFeedback,
-    FormText
+    FormText,
+    InputGroup,
+    InputGroupAddon
 } from 'reactstrap';
 import Calendar from 'react-calendar';
 
@@ -134,31 +136,31 @@ class FormHouerReport extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.formValidation();
-        this.setState({ user: '' });
-        this.setState({ date: new Date() });
-        const { startTime } = this.state;
-        const { endTime } = this.state;
+        this.setState({user: ''});
+        this.setState({date: new Date()});
+        const {startTime} = this.state;
+        const {endTime} = this.state;
         startTime.value = null;
         startTime.label = '';
         endTime.value = null;
         endTime.label = '';
-        this.setState({ startTime });
-        this.setState({ endTime });
-        const { validate } = this.state;
+        this.setState({startTime});
+        this.setState({endTime});
+        const {validate} = this.state;
         validate.emailState = '';
         validate.timeState = false;
         validate.emailEmpty = false;
-        this.setState({ validate });
+        this.setState({validate});
     }
 
     //changing inputs events
     handleChangeUser(event) {
-        this.setState({ user: event.target.value });
+        this.setState({user: event.target.value});
         this.validateEmail(event);
     }
 
     handleChangeStartTime(startTime) {
-        const { validate } = this.state;
+        const {validate} = this.state;
 
         if (this.state.endTime.value > startTime.value) {
             validate.timeState = false;
@@ -166,40 +168,40 @@ class FormHouerReport extends React.Component {
             validate.timeState = true;
         }
 
-        this.setState({ validate });
-        this.setState({ startTime });
+        this.setState({validate});
+        this.setState({startTime});
     }
 
     handleChangeEndTime(endTime) {
-        const { validate } = this.state;
+        const {validate} = this.state;
         if (this.state.startTime.value < endTime.value) {
             validate.timeState = false;
         } else if (this.state.startTime.value >= endTime.value) {
             validate.timeState = true;
         }
-        this.setState({ validate });
-        this.setState({ endTime });
+        this.setState({validate});
+        this.setState({endTime});
     }
 
     handleChangeDate(date) {
-        this.setState({ date });
+        this.setState({date});
     }
 
     //form validations
     validateEmail(event) {
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const { validate } = this.state;
+        const {validate} = this.state;
 
         if (emailRex.test(event.target.value)) {
             validate.emailState = 'has-success';
         } else {
             validate.emailState = 'has-danger';
         }
-        this.setState({ validate });
+        this.setState({validate});
     }
 
     formValidation() {
-        const { validate } = this.state;
+        const {validate} = this.state;
 
         if (this.state.user === '') {
             validate.formNotValid = true;
@@ -213,47 +215,54 @@ class FormHouerReport extends React.Component {
             validate.formNotValid = false;
         }
 
-        this.setState({ validate });
+        this.setState({validate});
     }
 
     render() {
 
-        let success = <div className="gradient-success"> <div className="success example alert alert-success">
-            <Label className="font-weight-bold">Thanks for aplly! You have successfully submited your information.</Label>
-            <br />
-            <Link className="btn btn-success btn-lg box-shadow--4dp" to="/">Home</Link>
-        </div>
+        let success = <div className="gradient-success">
+            <div className="success example alert alert-success">
+                <Label className="font-weight-bold">Thank you for applying! You have successfully submited your information.<br/>
+                    for home page press here.</Label>
+                <br/>
+                <Link className="btn btn-success btn-lg box-shadow--4dp" to="/">Home</Link>
+            </div>
         </div>;
 
-        let form = <div className="p-3 mb-2 bg-primary">
+        let form = <div className="p-3 mb-2 bg-info height">
             <Container className="report-form-main alert alert-dark">
                 <Form onSubmit={this.handleSubmit}>
                     <Col>
                         <FormGroup>
                             <Label for="exampleEmail">Email</Label>
-                            <Input
-                                type="email"
-                                name="email"
-                                id="exampleEmail"
-                                value={this.state.user}
-                                onChange={this.handleChangeUser}
-                                valid={this.state.validate.emailState === 'has-success'}
-                                invalid={this.state.validate.emailState === 'has-danger'} />
-                            <FormFeedback valid>
-                                Your email looks correct.
-                            </FormFeedback>
-                            <FormFeedback invalid>
-                                Uh oh! Looks like there is an issue with your email. Please input a correct
-                                email.
-                            </FormFeedback>
-                            {this.state.validate.emailEmpty && <FormText>Must fill email adress.</FormText>}
+                            <div className="input">
+                                <InputGroup >
+                                    <InputGroupAddon addonType="append">@</InputGroupAddon>
+                                    <Input
+                                        type="email"
+                                        name="email"
+                                        id="exampleEmail"
+                                        value={this.state.user}
+                                        onChange={this.handleChangeUser}
+                                        valid={this.state.validate.emailState === 'has-success'}
+                                        invalid={this.state.validate.emailState === 'has-danger'}/>
+                                    <FormFeedback valid>
+                                        Your email looks correct.
+                                    </FormFeedback>
+                                    <FormFeedback invalid>
+                                        Uh oh! Looks like there is an issue with your email. Please input a correct
+                                        email.
+                                    </FormFeedback>
+                                    {this.state.validate.emailEmpty && <FormText>Must fill email adress.</FormText>}
+                                </InputGroup>
+                            </div>
                         </FormGroup>
                     </Col>
                     <Col>
                         <FormGroup>
                             <Label for="exampleSelect">Start Time</Label>
                             <Select
-                                className="mdb-select colorful-select dropdown-primary"
+                                className="mdb-select colorful-select dropdown-primary input"
                                 value={this.state.startTime}
                                 onChange={this.handleChangeStartTime}
                                 options={options}></Select>
@@ -263,7 +272,7 @@ class FormHouerReport extends React.Component {
                         <FormGroup>
                             <Label for="exampleSelect">End Time</Label>
                             <Select
-                                className="mdb-select colorful-select dropdown-primary"
+                                className="mdb-select colorful-select dropdown-primary input"
                                 value={this.state.endTime}
                                 onChange={this.handleChangeEndTime}
                                 options={options}></Select>
@@ -276,7 +285,7 @@ class FormHouerReport extends React.Component {
                             <Calendar
                                 className="calender-main"
                                 value={this.state.date}
-                                onChange={this.handleChangeDate} />
+                                onChange={this.handleChangeDate}/>
                         </FormGroup>
                     </Col>
                     <Col>
@@ -284,12 +293,12 @@ class FormHouerReport extends React.Component {
                             {this.state.validate.formNotValid && <FormText>Please fill correct all the input fields before apply.</FormText>}
                         </FormGroup>
                     </Col>
-                    <Button type="submit" color="primary">APPLY</Button>
+                    <Button type="submit" color="info">APPLY</Button>
                 </Form>
             </Container>
         </div>;
 
-        const { formNotValid } = this.state.validate;
+        const {formNotValid} = this.state.validate;
 
         return (
             <div>

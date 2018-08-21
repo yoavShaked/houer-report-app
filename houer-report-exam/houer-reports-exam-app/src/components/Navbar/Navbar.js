@@ -7,10 +7,10 @@ class NavbarHouerReports extends React.Component{
             <div>
                 <Nav tabs>
                     <NavItem>
-                        <NavLink href="/houer-report-form">Houer Reports</NavLink>
+                        <NavLink href="/houer-report-form">Hours Report</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/show-reports">Display Reports</NavLink>
+                        <NavLink href="/show-reports">Display Report</NavLink>
                     </NavItem>
                 </Nav>
             </div>
