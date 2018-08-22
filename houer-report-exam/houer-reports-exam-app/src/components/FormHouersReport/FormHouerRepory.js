@@ -229,7 +229,7 @@ class FormHouerReport extends React.Component {
             </div>
         </div>;
 
-        let form = <div className="p-3 mb-2 bg-info height">
+        let form = <div className="p-3 mb-2 bg-dark height">
             <Container className="report-form-main alert alert-dark">
                 <Form onSubmit={this.handleSubmit}>
                     <Col>

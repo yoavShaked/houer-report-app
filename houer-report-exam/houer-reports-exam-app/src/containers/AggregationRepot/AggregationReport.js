@@ -97,18 +97,10 @@ class AggregationReport extends React.Component {
                 return (
                     <tr key={index}>
                         <th scope="row">{index + 1}</th>
-                        <td>
-                            {`${employe.userName}`}
-                        </td>
-                        <td>
-                            {`${employe.avgPerDay}`}
-                        </td>
-                        <td>
-                            {`${employe.sum}`}
-                        </td>
-                        <td>
-                            {`${employe.sumExtraHouers}`}
-                        </td>
+                        <td >{`${employe.userName}`}</td>
+                        <td>{`${employe.avgPerDay}`}</td>
+                        <td>{`${employe.sum}`}</td>
+                        <td>{`${employe.sumExtraHouers}`}</td>
                     </tr>
                 )
             });
@@ -133,15 +125,15 @@ class AggregationReport extends React.Component {
                         <div className="filter-button">
                             <Button color="secondary" onClick={this.clickFilterEvent}>Filter</Button>
                         </div>
-                        {this.state.showTable && <div className="center">
-                            <Table hover>
+                        {this.state.showTable && <div className="table-responsive-md center">
+                            <Table hover className="table-info">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>User Name</th>
-                                        <th>Avg Houers (per day)</th>
-                                        <th>Total Houers</th>
-                                        <th>Extra Houers</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Avg Houers (per day)</th>
+                                        <th scope="col">Total Houers</th>
+                                        <th scope="col">Extra Houers</th>
                                     </tr>
                                 </thead>
                                 <tbody>
