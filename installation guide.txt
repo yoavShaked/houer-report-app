@@ -1,3 +1,4 @@
+cd houer-reports-exam-app
 npm install
 npm install --save reactstrap
 npm install bootstrap --save
