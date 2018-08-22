@@ -1,4 +1,5 @@
 git clone https://github.com/yoavShaked/houer-report-app.git
+cd houer-report-exam
 cd houer-reports-exam-app
 npm install
 npm start
