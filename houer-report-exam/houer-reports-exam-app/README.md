@@ -1,9 +1,1 @@
-installation guide:
-npm install
-npm install --save reactstrap
-npm install bootstrap --save
-npm install react-calendar
-npm install react-select
-npm install --save react-router-dom
-npm install --save react-redux
-npm install --save redux
+
